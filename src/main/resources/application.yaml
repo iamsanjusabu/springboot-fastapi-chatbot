@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: springboot-fastapi
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/chatbot_db}
+    username: ${SPRING_DATASOURCE_USER:sanju}
+    password: ${SPRING_DATASOURCE_PASSWORD:sanju1234}
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
