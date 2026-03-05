@@ -1,5 +1,6 @@
 package com.sanjusabu.springbootfastapi.controller;
 
+import com.sanjusabu.springbootfastapi.dto.RequestQuestion;
 import com.sanjusabu.springbootfastapi.service.ChatbotService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class ChatbotController {
     }
 
     @PostMapping
-    public String chatbot(@RequestBody String question) {
-        return chatbotService.postRawTextToFastAPI(question);
+    public String chatbot(@RequestBody RequestQuestion question) {
+        return chatbotService.postRawTextToFastAPI(question.getQuestion());
     }
 }

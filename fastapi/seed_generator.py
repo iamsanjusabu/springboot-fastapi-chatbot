@@ -18,5 +18,4 @@ arr: list[str] = [
 
 with open("db/seed.sql", "a") as file:
     for i in range(0, len(arr)):
-        embeddings = model.encode(arr[i])
         file.write(f"INSERT INTO documents(content, embedding) VALUES ('{arr[i]}',\n'{model.encode(arr[i]).tolist()}') ON CONFLICT (content) DO NOTHING;\n\n")
