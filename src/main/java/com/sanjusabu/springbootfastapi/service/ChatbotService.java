@@ -1,7 +1,7 @@
 package com.sanjusabu.springbootfastapi.service;
 
-import com.sanjusabu.springbootfastapi.dto.RequestQuestion;
-import com.sanjusabu.springbootfastapi.dto.RequestQuestionWithContext;
+import com.sanjusabu.springbootfastapi.dto.llm.RequestQuestion;
+import com.sanjusabu.springbootfastapi.dto.llm.RequestQuestionWithContext;
 import com.sanjusabu.springbootfastapi.repository.VectorTableRepository;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;

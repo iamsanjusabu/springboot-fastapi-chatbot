@@ -1,4 +1,4 @@
-package com.sanjusabu.springbootfastapi.dto;
+package com.sanjusabu.springbootfastapi.dto.llm;
 
 import lombok.Getter;
 import lombok.Setter;

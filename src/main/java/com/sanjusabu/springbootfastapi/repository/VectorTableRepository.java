@@ -1,6 +1,6 @@
 package com.sanjusabu.springbootfastapi.repository;
 
-import com.sanjusabu.springbootfastapi.model.VectorTable;
+import com.sanjusabu.springbootfastapi.entity.VectorTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

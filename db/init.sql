@@ -1,4 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS vector;
+CREATE EXTENSION IF NOT EXISTS citext;
 
 CREATE TABLE IF NOT EXISTS documents (
      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -7,3 +8,14 @@ CREATE TABLE IF NOT EXISTS documents (
 );
 
 ALTER SEQUENCE documents_id_seq RENAME TO documents_seq;
+
+CREATE TABLE IF NOT EXISTS user_table (
+    user_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    gender VARCHAR(20) NOT NULL CHECK (gender IN ('MALE', 'FEMALE', 'OTHER', 'PREFER_NOT_TO_SAY')),
+    email CITEXT NOT NULL
+);
+
+ALTER SEQUENCE user_table_user_id_seq RENAME TO user_table_seq;

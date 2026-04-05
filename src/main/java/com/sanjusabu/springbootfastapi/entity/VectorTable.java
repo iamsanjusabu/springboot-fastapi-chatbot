@@ -1,4 +1,4 @@
-package com.sanjusabu.springbootfastapi.model;
+package com.sanjusabu.springbootfastapi.entity;
 
 
 import jakarta.persistence.*;

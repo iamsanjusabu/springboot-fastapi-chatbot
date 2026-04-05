@@ -1,6 +1,6 @@
 package com.sanjusabu.springbootfastapi.controller;
 
-import com.sanjusabu.springbootfastapi.dto.RequestQuestion;
+import com.sanjusabu.springbootfastapi.dto.llm.RequestQuestion;
 import com.sanjusabu.springbootfastapi.service.ChatbotService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

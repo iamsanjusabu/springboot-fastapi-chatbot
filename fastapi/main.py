@@ -17,3 +17,11 @@ def chatbot(question_context_json: RequestQuestionWithContext):
     response = prompt(question_context_json)
 
     return response
+
+@app.get("/api/health")
+def health() -> str:
+    return "active"
+
+@app.get("/api/ping")
+def pong() -> str:
+    return "pong"
