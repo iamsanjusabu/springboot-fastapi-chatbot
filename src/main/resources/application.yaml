@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: springboot-fastapi
+    name: local-rag-jwt-secure-chatbot
 
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/chatbot_db}

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sanjusabu</groupId>
-    <artifactId>springboot-fastapi</artifactId>
+    <artifactId>local-rag-jwt-secure-chatbot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-fastapi</name>
-    <description>springboot-fastapi</description>
+    <name>local-rag-jwt-secure-chatbot</name>
+    <description>local-rag-jwt-secure-chatbot</description>
     <url/>
     <licenses>
         <license/>

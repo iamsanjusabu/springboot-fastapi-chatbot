@@ -1,43 +1,43 @@
 # Spring Boot + FastAPI RAG Chatbot
 
-A Retrieval-Augmented Generation system using:
-- Spring Boot (Java)
-- FastAPI (Python)
-- Llama 3.2 (local inference)
-- BGE-small-en-v1.5 embeddings
-- PostgreSQL + pgvector
-- Docker Compose
+A Retrieval-Augmented Generation chatbot using Spring Boot, FastAPI, Llama 3.2 for local inference, BGE-small-en-v1.5 for embeddings, and PostgreSQL with pgvector for vector storage.
 
----
+## How it works
 
-## Overview
+There's no UI except an health check endpoint, tests are done using Postman.
 
-### How it works
-
-Send a POST request to Spring Boot 
-
-http://localhost:8080/api/chatbot
+Send your question to Spring Boot at `POST http://localhost:8080/api/chatbot` with:
 
 ```json
 {
-  "question":"question here"
+  "question": "your question here"
 }
 ```
 
-(POSTMAN or curl (POSTMAN preferred), no UI intentionally).
+Spring Boot is the orchestration layer. It takes your question, asks FastAPI to vectorize it using BGE embeddings, then runs a similarity search in pgvector. If relevant context is found, it gets sent along with the question to FastAPI. If not, just the question goes through.
 
-Spring Boot sends the question to FastAPI (POST) which vectorizes it using BGE embeddings model then returns the vector back to Spring Boot.
+FastAPI handles all the ML. It builds a prompt for Llama 3.2 — with or without context depending on what came back from the vector search — and returns the response up through Spring Boot to you.
 
-Spring Boot then does a similiarity search in pgvector, If context is found, it sends the question + context to FastAPI. If not, it sends the question with an empty list.
+Llama runs entirely locally with 4-bit quantization via bitsandbytes (hardware constraints).
 
-FastAPI checks if context exists or not. 
-- If yes, it builds a system + context + user prompt for llama 3.2
-- if not, it builds a system + user prompt for llama 3.2
+## Authentication
 
-Llama runs locally, no api calls
+Before hitting the chatbot endpoint, get a JWT token from `POST http://localhost:8080/auth/login/jwt` with your username and password. Then include it in your requests as `Authorization: Bearer <token>`. All `/api/*` endpoints are protected.
 
-Response comes back to Spring Boot and out to the client.
+## Stack
 
-**Spring Boot is the orchestration layer and FastAPI is purely the ML layer.**
+- Spring Boot
+- FastAPI
+- Llama 3.2
+- BGE-small-en-v1.5
+- PostgreSQL + pgvector
+- Docker Compose
 
-*Llama model runs locally with 4-bit quantization (bitsandbytes) due to hardware constraints.*
+## Running it
+
+Make sure Docker is running, then `docker compose up`. That starts the PostgreSQL container. The chatbot is ready at `http://localhost:8080/api/chatbot`.
+
+## Notes
+
+- Llama runs locally, no external API calls are made for inference
+- The FastAPI service is not exposed directly; all requests go through Spring Boot
